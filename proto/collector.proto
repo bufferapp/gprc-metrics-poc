@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package metrics;
+
+// TODO - Figure out how to get this to work
+// import "google/protobuf/timestamp.proto";
+
+// The service definition
+service MetricsCollector {
+  rpc TrackVisit (Visit) returns (Response) {}
+}
+
+message Visit {
+  string id = 1;
+  // google.protobuf.Timestamp timestamp = 2;
+  string uri = 3;
+  string ip = 4;
+  Utm utm = 5;
+  UserAgent useragent = 6;
+  string visitor_id = 7;
+}
+
+// Visit helper messages
+message Utm {
+  string source = 1;
+  string medium = 2;
+  string campaign = 3;
+  string content = 4;
+}
+
+message UserAgent {
+  string browser = 1;
+  string version = 2;
+}
+
+//
+message Response {
+  string message = 1;
+}
