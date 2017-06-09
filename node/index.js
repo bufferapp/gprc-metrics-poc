@@ -1,6 +1,6 @@
 // const path = require('path')
 const grpc = require('grpc')
-const uuidV4 = require('uuid/v4')
+const uuid = require('uuid/v4')
 const useragent = require('useragent')
 const { MetricsCollectorClient } = require('./proto/collector_grpc_pb')
 const {
@@ -74,10 +74,9 @@ class BufferMetrics {
 
   clientResponseHandler (err, res) {
     if (err) {
-      process.stderr.write(`Error tracking metric: ${err.message}`)
+      process.stderr.write(`Error tracking metric: ${err.message}\n`)
     } else if (this.debug) {
-      console.log(res)
-      process.stdout.write(`Tracked metric`)
+      process.stdout.write(`Tracked metric\n`)
     }
   }
 
@@ -87,7 +86,7 @@ class BufferMetrics {
    */
   trackVisit (req) {
     const v = new Visit()
-    v.setId(uuidV4())
+    v.setId(uuid())
     v.setUri(removeTokensFromUrl(req.url))
     v.setIp(req.headers['x-forwarded-for'] || req.connection.remoteAddress)
 

@@ -19,8 +19,6 @@ function serialize_metrics_Visit(arg) {
   if (!(arg instanceof proto_collector_pb.Visit)) {
     throw new Error('Expected argument of type metrics.Visit');
   }
-  console.log(arg)
-  console.log(arg.toObject())
   return new Buffer(arg.serializeBinary());
 }
 

@@ -12,7 +12,7 @@ const getFakeRequest = (idx) => ({
   query: { utm_source: 'social' }
 })
 
-const VISITS = 1//0
+const VISITS = 10
 
 for (var i = 0; i < VISITS; i++) {
   b.trackVisit(getFakeRequest(i))
