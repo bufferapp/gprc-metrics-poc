@@ -1,2 +1,7 @@
 vendor
 node_modules
+__pycache__
+
+consumer.log
+consumer.env
+run.sh

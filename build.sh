@@ -7,3 +7,5 @@ protoc proto/collector.proto \
   --grpc_out=node \
   --js_out=import_style=commonjs:node \
   --plugin=protoc-gen-grpc=$NODE_PLUGIN
+
+cp -R python/proto/ consumer-demo

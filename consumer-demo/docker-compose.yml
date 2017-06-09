@@ -1,0 +1,25 @@
+version: "2"
+services:
+  consumer:
+    build: .
+    # command: python main.py
+    volumes:
+     - .:/app
+    links:
+     - db
+    environment:
+      - DB_USER=admin
+      - DB_PASSWORD=password
+      - DB_PORT=5432
+      - DB_HOST=db
+      - DB_NAME=buffermetrics
+    env_file:
+      consumer.env
+  db:
+    image: postgres:9.6-alpine
+    ports:
+     - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=buffermetrics
