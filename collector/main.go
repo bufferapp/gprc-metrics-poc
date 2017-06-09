@@ -52,7 +52,7 @@ func putRecord(metricType string, data []byte) error {
 }
 
 func sendMetric(metricType string, data []byte) (*pb.Response, error) {
-	err := putRecord("Visit", data)
+	err := putRecord(metricType, data)
 	if err != nil {
 		return nil, err
 	}
