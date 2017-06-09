@@ -17,16 +17,13 @@ Install all the golang dependencies. Be sure to have you GOPATH set up before.
 glide install
 ```
 
-Next, generate the gRPC code using `protoc`:
+To run the collector service, use your AWS credentials and run this command (or save as a shell script for easy re-use):
 
 ```
-protoc buffer-metrics-proto/collector.proto \
-  --go_out=plugins=grpc:. \
-  --python_out=.
-```
+#!/bin/sh
 
-Now you should be able to run your application;
-
-```
-go run main.go
+KINESIS_STREAM="dev_buffermetrics" \
+  AWS_ACCESS_KEY_ID="1234567890ASDFGHJKL" \
+  AWS_SECRET_ACCESS_KEY="dfghjk567890fghjk567890fghj" \
+  go run main.go
 ```
